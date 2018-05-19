@@ -7,9 +7,13 @@
     <Revision>2</Revision>
   </ToolchainVersion>
   <BspID>com.visualgdb.bsp.in-place</BspID>
+  <BspVersion>1.0</BspVersion>
   <McuID>STM32F429ZI</McuID>
   <BSPSubdirectory>BSP</BSPSubdirectory>
-  <MCUDefinitionFile>stm32f429xx.xml</MCUDefinitionFile>
+  <MCUDefinitionFile>STM32F4xxxx\DeviceDefinitions\stm32f429xx.xml</MCUDefinitionFile>
+  <MCUProperties>
+    <Entries />
+  </MCUProperties>
   <BSPSourceFolderName>Device-specific files</BSPSourceFolderName>
   <InPlaceMCU>
     <ID>STM32F429ZI</ID>
@@ -27,11 +31,14 @@
         <string>$$SYS:BSP_ROOT$$/STM32F4xxxx/STM32F4xx_HAL_Driver/Inc/Legacy</string>
         <string>$$SYS:BSP_ROOT$$/STM32F4xxxx/CMSIS_HAL/Device/ST/STM32F4xx/Include</string>
         <string>$$SYS:BSP_ROOT$$/STM32F4xxxx/CMSIS_HAL/Include</string>
+        <string>G:/Caio/EmbSys/ESEE/00-TCC/ltdc_2_layers/FreeRTOS/include</string>
       </IncludeDirectories>
+      <CFLAGS />
+      <CXXFLAGS />
       <LDFLAGS>--specs=nano.specs --specs=nosys.specs</LDFLAGS>
-      <ASFLAGS>-mfpu=fpv4-sp-d16</ASFLAGS>
+      <ASFLAGS />
       <LinkerScript>$$SYS:BSP_ROOT$$/STM32F4xxxx/LinkerScripts/STM32F429ZI_flash.lds</LinkerScript>
-      <COMMONFLAGS>-mcpu=cortex-m4 -mthumb -mfloat-abi=hard</COMMONFLAGS>
+      <COMMONFLAGS>-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16</COMMONFLAGS>
       <EnableLinkerGroups>true</EnableLinkerGroups>
     </CompilationFlags>
     <AdditionalSourceFiles>
@@ -362,7 +369,7 @@
     <RAMSize>262144</RAMSize>
     <FLASHBase>134217728</FLASHBase>
     <RAMBase>536870912</RAMBase>
-    <MCUDefinitionFile>STM32F4xxxx/DeviceDefinitions/stm32f429xx.xml</MCUDefinitionFile>
+    <MCUDefinitionFile>STM32F4xxxx\DeviceDefinitions\stm32f429xx.xml</MCUDefinitionFile>
     <AdditionalSourcesRequiredForTesting>false</AdditionalSourcesRequiredForTesting>
   </InPlaceMCU>
   <MCUMakFile>stm32.mak</MCUMakFile>

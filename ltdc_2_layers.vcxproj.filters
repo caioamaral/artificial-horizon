@@ -28,6 +28,9 @@
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{1b93bf23-c690-4ddc-a9a2-40e31b9ad6d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Src\FreeRTOS">
+      <UniqueIdentifier>{35c0a6bc-3a0d-44a9-a6bd-ba65b64924a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\main.c">
@@ -338,6 +341,30 @@
     </ClCompile>
     <ClCompile Include="Src\stm32f429i_discovery_sdram.c">
       <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\croutine.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\event_groups.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\list.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\port.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\queue.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\stream_buffer.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\tasks.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\timers.c">
+      <Filter>Source files\Src\FreeRTOS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -685,6 +712,12 @@
     </ClInclude>
     <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_HAL\Device\ST\STM32F4xx\Include\system_stm32f4xx.h">
       <Filter>Header files\Device-specific files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\FreeRTOSConfig.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\task.h">
+      <Filter>Header files\Inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -870,7 +870,7 @@ uint32_t LCD_IO_ReadData(uint16_t RegValue, uint8_t ReadSize)
   */
 void LCD_Delay(uint32_t Delay)
 {
-  HAL_Delay(Delay);
+	HAL_Delay(Delay); 
 }
 
 /*******************************************************************************

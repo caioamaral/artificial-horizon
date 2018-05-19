@@ -14,7 +14,7 @@
     <VCProjectVersion>14.0</VCProjectVersion>
     <ProjectGuid>{B0F2681E-6810-4466-BB51-9ED1892B79B6}</ProjectGuid>
     <BSP_ID>com.visualgdb.bsp.in-place</BSP_ID>
-    <BSP_VERSION>4.5R2</BSP_VERSION>
+    <BSP_VERSION>1.0</BSP_VERSION>
     <InPlaceBSPSubdir>BSP</InPlaceBSPSubdir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;Src;Fonts;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;Src;Fonts;FreeRTOS/include;FreeRTOS;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -61,6 +61,14 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
+    <ClCompile Include="FreeRTOS\croutine.c" />
+    <ClCompile Include="FreeRTOS\event_groups.c" />
+    <ClCompile Include="FreeRTOS\list.c" />
+    <ClCompile Include="FreeRTOS\port.c" />
+    <ClCompile Include="FreeRTOS\queue.c" />
+    <ClCompile Include="FreeRTOS\stream_buffer.c" />
+    <ClCompile Include="FreeRTOS\tasks.c" />
+    <ClCompile Include="FreeRTOS\timers.c" />
     <ClCompile Include="Src\ili9341.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\stm32f429i_discovery.c" />
@@ -156,6 +164,8 @@
     <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usart.c" />
     <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c" />
     <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_utils.c" />
+    <ClInclude Include="FreeRTOS\include\task.h" />
+    <ClInclude Include="Inc\FreeRTOSConfig.h" />
     <ClInclude Include="Inc\ili9341.h" />
     <ClInclude Include="Inc\lcd.h" />
     <ClInclude Include="Inc\main.h" />
