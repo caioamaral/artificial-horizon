@@ -36,8 +36,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "st_logo1.h"
-#include "st_logo2.h"
+#include "base_file.h"
+#include "horizon_file.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include <stm32f4xx_hal.h>
@@ -115,7 +115,7 @@ void vTask2(void *pvParameters)
 		for (index = 0; index < 40; index++)
 		{
 			/* calculate new picture position */
-			PicturesPosition(&Xpos1, &Ypos1, &Xpos2, &Ypos2, (index + 1));
+			//PicturesPosition(&Xpos1, &Ypos1, &Xpos2, &Ypos2, (index + 1));
       
 			/* reconfigure the layer1 position  without Reloading*/
 			HAL_LTDC_SetWindowPosition_NoReload(&LtdcHandle, Xpos1, Ypos1, 0);
@@ -132,25 +132,25 @@ void vTask2(void *pvParameters)
 		}
 		vTaskDelay(500);
     
-		for (index = 0; index < 40; index++)
-		{
-			/* calculate new picture position */
-			PicturesPosition(&Xpos2, &Ypos2, &Xpos1, &Ypos1, (index + 1));
-      
-			/* reconfigure the layer1 position  without Reloading*/
-			HAL_LTDC_SetWindowPosition_NoReload(&LtdcHandle, Xpos1, Ypos1, 0);
-			/* reconfigure the layer2 position  without Reloading*/
-			HAL_LTDC_SetWindowPosition_NoReload(&LtdcHandle, Xpos2, Ypos2, 1);
-			/* Ask for LTDC reload within next vertical blanking*/
-			ReloadFlag = 0;
-			HAL_LTDC_Reload(&LtdcHandle, LTDC_SRCR_VBR);
-      
-			while (ReloadFlag == 0)
-			{
-				/* wait till reload takes effect (in the next vertical blanking period) */
-			}
-		}
-		vTaskDelay(500);
+//		for (index = 0; index < 40; index++)
+//		{
+//			/* calculate new picture position */
+//			PicturesPosition(&Xpos2, &Ypos2, &Xpos1, &Ypos1, (index + 1));
+//      
+//			/* reconfigure the layer1 position  without Reloading*/
+//			HAL_LTDC_SetWindowPosition_NoReload(&LtdcHandle, Xpos1, Ypos1, 0);
+//			/* reconfigure the layer2 position  without Reloading*/
+//			HAL_LTDC_SetWindowPosition_NoReload(&LtdcHandle, Xpos2, Ypos2, 1);
+//			/* Ask for LTDC reload within next vertical blanking*/
+//			ReloadFlag = 0;
+//			HAL_LTDC_Reload(&LtdcHandle, LTDC_SRCR_VBR);
+//      
+//			while (ReloadFlag == 0)
+//			{
+//				/* wait till reload takes effect (in the next vertical blanking period) */
+//			}
+//		}
+//		vTaskDelay(500);
 	}
 	
 }
@@ -314,13 +314,13 @@ static void LCD_Config(void)
 	pLayerCfg.WindowX0 = 0;
 	pLayerCfg.WindowX1 = 240;
 	pLayerCfg.WindowY0 = 0;
-	pLayerCfg.WindowY1 = 160;
+	pLayerCfg.WindowY1 = 320;
   
 	/* Pixel Format configuration*/ 
 	pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_RGB565;
   
 	/* Start Address configuration : frame buffer is located at FLASH memory */
-	pLayerCfg.FBStartAdress = (uint32_t)&ST_LOGO_1;
+	pLayerCfg.FBStartAdress = (uint32_t)&image_data_gimp2;
   
 	/* Alpha constant (255 totally opaque) */
 	pLayerCfg.Alpha = 255;
@@ -337,21 +337,21 @@ static void LCD_Config(void)
   
 	/* Configure the number of lines and number of pixels per line */
 	pLayerCfg.ImageWidth = 240;
-	pLayerCfg.ImageHeight = 160;
+	pLayerCfg.ImageHeight = 320;
 
 	/* Layer2 Configuration ------------------------------------------------------*/
   
 	  /* Windowing configuration */
 	pLayerCfg1.WindowX0 = 0;
 	pLayerCfg1.WindowX1 = 240;
-	pLayerCfg1.WindowY0 = 160;
+	pLayerCfg1.WindowY0 = 0;
 	pLayerCfg1.WindowY1 = 320;
   
 	/* Pixel Format configuration*/ 
 	pLayerCfg1.PixelFormat = LTDC_PIXEL_FORMAT_RGB565;
   
 	/* Start Address configuration : frame buffer is located at FLASH memory */
-	pLayerCfg1.FBStartAdress = (uint32_t)&ST_LOGO_2;
+	pLayerCfg1.FBStartAdress = (uint32_t)&horizon_image;
   
 	/* Alpha constant (255 totally opaque) */
 	pLayerCfg1.Alpha = 200;
@@ -368,7 +368,7 @@ static void LCD_Config(void)
   
 	/* Configure the number of lines and number of pixels per line */
 	pLayerCfg1.ImageWidth = 240;
-	pLayerCfg1.ImageHeight = 160;  
+	pLayerCfg1.ImageHeight = 320;  
    
 	/* Configure the LTDC */  
 	if (HAL_LTDC_Init(&LtdcHandle) != HAL_OK)
